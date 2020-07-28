@@ -1,0 +1,1 @@
+pyinstaller --onefile -n mathGen gui.py
