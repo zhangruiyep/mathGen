@@ -8,6 +8,8 @@ import threading
 import time
 import random
 
+intMax = 9999
+
 class filesTreeview(ttk.Treeview):
 	def __init__(self, master=None):
 		ttk.Treeview.__init__(self, master)
@@ -66,20 +68,30 @@ class Application(ttk.Frame):
 			self.tv.delete(item)
 
 		for idx in range(1, 21):
-			sumInt = random.randint(2,99)
+			sumInt = random.randint(2,intMax)
 			a = random.randint(1,sumInt-1)
-			addSym = random.randint(1,2)
+			addSym = random.randint(1,4)
 			#print(sumInt, a, addSym)
 			if addSym == 1:
 				arith = '+'
 				b = sumInt - a
 				result = sumInt
-			else:
+			elif addSym == 2:
 				arith = '-'
 				b = a
 				a = sumInt
 				result = a - b
-			
+			elif addSym == 3:
+				arith = 'X'
+				b = a
+				a = sumInt
+				result = a * b
+			elif addSym == 4:
+				arith = '/'
+				b = a
+				a = sumInt
+				result = a / b
+                
 			self.tv.insert('',"end",values=(a,arith,b,'=',result))
 				
 		
